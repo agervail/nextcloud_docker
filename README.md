@@ -1,4 +1,8 @@
 # Server configuration scaleway
+
+## Sudo 
+
+Because scaleway run a weird ubuntu instance you don't have sudo installed
 ```
 apt install sudo
 usermod -aG sudo antoine
@@ -22,10 +26,12 @@ chmod -w /etc/sudoers
 
 After that you can log as antoine
 
+## Docker
 
-Then install docker
-https://docs.docker.com/install/linux/docker-ce/ubuntu/
+Install docker https://docs.docker.com/install/linux/docker-ce/ubuntu/
+
 Don't forget to add your user in docker group
+
 And to run docker on boot :
 ```
 sudo systemctl enable docker
@@ -33,18 +39,21 @@ sudo systemctl enable docker
 then install docker-compose
 https://docs.docker.com/compose/install/
 
+## Configuration
 
+* Add password in db.env __l1__ and docker-compose.yml __l11__
+* Change the VIRTUAL_HOST, LETSENCRYPT_HOST and LETSENCRYPT_EMAIL __l21-23__ in docker-compose.yml
 
+## RUN
 
-add password in db.env l1 and docker-compose.yml l11
-Eventually you need to modify the VIRTUAL_HOST and LETSENCRYPT_HOST
-
-you can then do
+to run the docker :
 ```
 cd nextcloud_docker/docker
 docker-compose build --pull
 docker-compose up -d
 ```
+
+## Bucket Storage scaleway
 
 In order to use bucket storage provided by scaleway you need to do some more steps
 * Create a bucket (Storage -> Object Storage)
