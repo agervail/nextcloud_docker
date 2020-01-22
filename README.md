@@ -83,3 +83,10 @@ add those lines :
 ```
 
 wait a moment and the changes should happen
+
+## Commands
+
+If you want tu run an occ command on your container you can do :
+```
+docker exec --user www-data docker_app_1 php occ maintenance:mode --off
+```
